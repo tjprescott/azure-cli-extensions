@@ -33,9 +33,9 @@ while read line; do
     fi
     set -e
     echo "Load all commands"
-    azdev verify load-all
+    az self-test
     echo "Running linter"
-    azdev cli-lint --ci --extensions $ext
+    azdev linter $ext
     az extension remove -n $ext
     echo $ext "extension has been removed."
 done <<< "$modified_extensions"
